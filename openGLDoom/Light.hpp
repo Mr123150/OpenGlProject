@@ -13,6 +13,8 @@
 #include <glm/glm.hpp>
 #include <GL/glew.h>
 
+#include <iostream>
+
 class Light{
 public:
     Light() =default;
@@ -27,8 +29,8 @@ protected:
     glm::vec3 pos;
     glm::vec3 color;
     
-    GLfloat ambient = 0;
-    GLfloat attenuation = 1;
+    GLfloat ambient;
+    GLfloat attenuation;
 };
 
 #endif /* Light_hpp */

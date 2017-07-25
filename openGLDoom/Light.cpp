@@ -12,22 +12,33 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <GL/glew.h>
 
+#include <iostream>
+
 Light::Light(const GLuint& _prog, const glm::vec3& _pos, const glm::vec3& _color){
     program = _prog;
     pos = _pos;
     color = _color;
+    
+    ambient = 0;
+    attenuation = 1;
 }
 
 Light::Light(const Light& l){
     program = l.program;
     pos = l.pos;
     color = l.color;
+    
+    ambient=l.ambient;
+    attenuation=l.attenuation;
 }
 
 Light& Light::operator=(const Light &l){
     program = l.program;
     pos = l.pos;
     color = l.color;
+    
+    ambient=l.ambient;
+    attenuation=l.attenuation;
     
     return *this;
 }

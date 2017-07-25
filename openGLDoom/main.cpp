@@ -97,7 +97,10 @@ int main(){
     Box box1 = Box(program, glm::vec3(1,0,1), true, "img_test.png");
     Box box2 = Box(program, glm::vec3(1,0,-1), true, "img_test.png");
     
+    box2.setShine(0.5,glm::vec3(1,0,0));
+    
     Light light = Light(program, glm::vec3(3,0,1), glm::vec3(1,1,1));
+    light.setup(1, 1);
     
     scene = Scene(window, cam);
     

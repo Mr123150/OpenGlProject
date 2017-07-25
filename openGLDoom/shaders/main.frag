@@ -40,14 +40,16 @@ void main(void) {
     vec3 reflection = reflect(incidence, normal);
     vec3 surfCamera = normalize(cameraPos - surfPos);
     float cosAngle = max(0.0, dot(surfCamera, reflection));
-    float specularCoef = pow(cosAngle, material.shine);
+    float specularCoef = max(0.0, pow(cosAngle, material.shine));
     vec3 specular = specularCoef * material.color * light.color;
     
     float distLight = length(light.position - surfPos);
     float attenuation = 1.0/(1.0 + light.attenuation * pow(distLight, 2));
     
     vec3 linearColor = ambient + attenuation * (diffuse + specular);
+    //vec3 linearColor = (ambient+attenuation*(diffuseCoef))*surfColor.rgb*light.color;
     
-    vec3 gamma = vec3(1.0/2.2);
-    color = vec4(pow(linearColor, gamma), surfColor.a);
+    //vec3 gamma = vec3(1.0/2.2);
+    //color = vec4(pow(linearColor, gamma), surfColor.a);
+    color = vec4(linearColor, surfColor.a);
 }

@@ -144,6 +144,9 @@ Box::Box(const Box& b){
     pos = b.pos;
     solid = b.solid;
     tex = b.tex;
+    
+    shine = b.shine;
+    color = b.color;
 }
 
 Box& Box::operator=(const Box& b){
@@ -157,6 +160,9 @@ Box& Box::operator=(const Box& b){
     pos = b.pos;
     solid = b.solid;
     tex = b.tex;
+    
+    shine = b.shine;
+    color = b.color;
     
     return *this;
 }
@@ -179,7 +185,7 @@ void Box::render(){
     
     glUniformMatrix4fv(glGetUniformLocation(program, "model"),1,GL_FALSE,glm::value_ptr(glm::translate(pos)));
     
-    glUniform1f(glGetUniformLocation(program, "material.color"),shine);
+    glUniform1f(glGetUniformLocation(program, "material.shine"),shine);
     glUniform3fv(glGetUniformLocation(program, "material.color"),1,glm::value_ptr(color));
     
     glDrawArrays(GL_TRIANGLES, 0, 6*2*3);
